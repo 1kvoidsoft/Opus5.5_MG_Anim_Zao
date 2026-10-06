@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>普通朋友 · 陶喆 · MG 动画</title>
+<style>
+/*@@STYLE@@*/
+</style>
+<script>
+// 错误捕获：最先执行，任何后续脚本的错误都写入隐藏的 pre#__errors，供无头验证读取
+(function () {
+  function report(msg) {
+    var el = document.getElementById('__errors');
+    if (el) el.textContent += msg + '\n';
+    else (window.__pendingErrors = window.__pendingErrors || []).push(msg);
+  }
+  window.__reportError = report;
+  window.onerror = function (msg, src, line, col, err) {
+    report('[error] ' + msg + ' @' + (line || 0) + ':' + (col || 0) + (err && err.stack ? '\n' + err.stack : ''));
+  };
+  window.addEventListener('unhandledrejection', function (ev) {
+    var r = ev.reason;
+    report('[unhandledrejection] ' + (r && r.stack ? r.stack : String(r)));
+  });
+})();
+</script>
+</head>
+<body>
+<pre id="__errors" hidden></pre>
+<script>
+if (window.__pendingErrors) document.getElementById('__errors').textContent += window.__pendingErrors.join('\n') + '\n';
+</script>
+<div id="stage">
+  <canvas id="mg" role="img" aria-label="歌词 MG 动画：《普通朋友》，演唱：陶喆"></canvas>
+</div>
+<div id="recBadge" class="rec-badge" hidden aria-live="polite"></div>
+<div id="ui" class="ui" role="toolbar" aria-label="播放控制">
+  <button id="btnPlay" class="btn btn-icon" type="button" aria-label="播放">▶</button>
+  <span id="timeLabel" class="time" aria-live="off">00:00 / 04:17</span>
+  <div id="bar" class="bar" role="slider" tabindex="0" aria-label="播放进度"
+       aria-valuemin="0" aria-valuemax="257" aria-valuenow="0" aria-valuetext="00:00 / 04:17">
+    <div id="barFill" class="bar-fill"></div>
+    <div id="barKnob" class="bar-knob"></div>
+  </div>
+  <button id="btnAudio" class="btn" type="button">加载音频</button>
+  <input id="audioFile" type="file" accept="audio/*" hidden>
+  <button id="btnRec" class="btn" type="button">录制视频</button>
+  <button id="btnFs" class="btn" type="button" aria-label="全屏">全屏</button>
+  <span class="hint">空格 播放/暂停 · ←/→ 5 秒 · F 全屏 · H 隐藏</span>
+</div>
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+<!--@@SCRIPTS@@-->
+</body>
+</html>

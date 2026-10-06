@@ -1,0 +1,15 @@
+# OS/editor files
+.DS_Store
+Thumbs.db
+Desktop.ini
+.vscode/
+.idea/
+
+# Local exports and recordings
+*.webm
+*.mp4
+*.mov
+*.m4a
+*.mp3
+*.wav
+*.ogg
